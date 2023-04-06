@@ -21,12 +21,18 @@ public class RegisterPage extends Page {
     private WebElement privacyCheckBox;
     @FindBy(xpath = "//*[@id=\"form-register\"]/div/div/button")
     private WebElement continueButton;
-    public void fillInTheRegisterForm(String firstName, String lastName, String email, String password){
+
+    public void fillInTheRegisterForm(String firstName, String lastName, String email, String password) {
         firstNameInput.sendKeys(firstName);
         lastNameInput.sendKeys(lastName);
         emailInput.sendKeys(email);
         passwordInput.sendKeys(password);
 
+    }
+
+    public boolean allTheElementsAreDisplayed() {
+        return firstNameInput.isDisplayed() && lastNameInput.isDisplayed() && emailInput.isDisplayed() && passwordInput.isDisplayed() &&
+                continueButton.isDisplayed() && privacyCheckBox.isDisplayed();
     }
 
 }
