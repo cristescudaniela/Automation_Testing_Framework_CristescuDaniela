@@ -18,11 +18,11 @@ public class WebDriverManager {
             case "CHROME":
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--remote-allow-origins=*");
-                System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
+                System.setProperty("webdriver.chrome.driver", "/Users/danielacristescu/Desktop/Proiectele mele/Automation_Testing_Framework_CristescuDaniela/Automation_Testing_Framework_CristescuDaniela/src/main/resources/drivers/chromedriver");
                 driver = new ChromeDriver(chromeOptions);
                 break;
             case "FIREFOX":
-                System.setProperty("webdriver.gecko,driver", "src/main/resources/drivers/geckodriver.exe");
+                System.setProperty("webdriver.gecko,driver", "/Users/danielacristescu/Desktop/Proiectele mele/Automation_Testing_Framework_CristescuDaniela/Automation_Testing_Framework_CristescuDaniela/src/main/resources/drivers/geckodriver");
                 driver = new FirefoxDriver();
                 break;
             default:
