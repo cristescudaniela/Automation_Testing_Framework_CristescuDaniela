@@ -11,11 +11,13 @@ public class Hooks {
         testContext = context;
     }
     @Before
-    public void setUpBeforeEachTest(){
+    public void setUpBeforeEach(){
         testContext.getWebDriverManager().getDriver();
+        System.out.println("The test case is started.");
     }
     @After
-    public void tearDownAfterEachTest(){
+    public void tearDownAfterEach(){
         testContext.getWebDriverManager().getDriver().close();
+        System.out.println("The test case is finished.");
     }
 }
