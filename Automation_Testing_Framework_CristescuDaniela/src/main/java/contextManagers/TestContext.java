@@ -1,4 +1,4 @@
-package ContextManagers;
+package contextManagers;
 
 import managers.WebDriverManager;
 

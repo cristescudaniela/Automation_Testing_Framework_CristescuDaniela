@@ -6,14 +6,14 @@ Feature: Register feature test suite
 
   @run
   Scenario: Register Page URL is accessible from Home Page
-    When My account button is clicked
-    And Register button is clicked
-    Then "register" is present within current url
-
+    When my account button is clicked
+    And  register account button is clicked
+    Then the new url contains the following string "register"
+    
   Scenario Outline: Register page url contains the following <keyword>
-    When My account button is clicked
-    And Register button is clicked
-    Then "<keyword>" is present within current url
+    When my account button is clicked
+    And register account button is clicked
+    Then the new url contains the following string "<keyword>"
     Examples:
       | keyword          |
       | index            |
