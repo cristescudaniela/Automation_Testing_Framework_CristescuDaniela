@@ -5,6 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class RegisterPage extends Page {
+
+    public boolean allTheEllementsAreDisplayed;
+
     public RegisterPage(WebDriver driver) {
         super(driver);
     }
@@ -30,9 +33,7 @@ public class RegisterPage extends Page {
 
     }
 
-    public boolean allTheElementsAreDisplayed() {
-        return firstNameInput.isDisplayed() && lastNameInput.isDisplayed() && emailInput.isDisplayed() && passwordInput.isDisplayed() &&
-                continueButton.isDisplayed() && privacyCheckBox.isDisplayed();
+    public boolean allTheEllementsAreDisplayed() {
+        return firstNameInput.isDisplayed() && lastNameInput.isDisplayed() && emailInput.isDisplayed() && passwordInput.isDisplayed() && privacyCheckBox.isDisplayed() && continueButton.isDisplayed();
     }
-
 }
