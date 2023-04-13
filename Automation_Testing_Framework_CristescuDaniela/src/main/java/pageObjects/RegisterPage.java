@@ -5,6 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class RegisterPage extends Page {
+
+    public boolean allTheEllementsAreDisplayed;
+
     public RegisterPage(WebDriver driver) {
         super(driver);
     }
@@ -21,7 +24,8 @@ public class RegisterPage extends Page {
     private WebElement privacyCheckBox;
     @FindBy(xpath = "//*[@id=\"form-register\"]/div/div/button")
     private WebElement continueButton;
-    public void fillInTheRegisterForm(String firstName, String lastName, String email, String password){
+
+    public void fillInTheRegisterForm(String firstName, String lastName, String email, String password) {
         firstNameInput.sendKeys(firstName);
         lastNameInput.sendKeys(lastName);
         emailInput.sendKeys(email);
@@ -29,4 +33,7 @@ public class RegisterPage extends Page {
 
     }
 
+    public boolean allTheEllementsAreDisplayed() {
+        return firstNameInput.isDisplayed() && lastNameInput.isDisplayed() && emailInput.isDisplayed() && passwordInput.isDisplayed() && privacyCheckBox.isDisplayed() && continueButton.isDisplayed();
+    }
 }
