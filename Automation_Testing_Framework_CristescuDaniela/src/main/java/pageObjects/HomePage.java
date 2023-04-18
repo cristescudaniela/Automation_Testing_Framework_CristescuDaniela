@@ -3,8 +3,13 @@ package pageObjects;
 import org.openqa.selenium.WebDriver;
 
 public class HomePage extends Page {
+
     public HomePage(WebDriver driver) {
         super(driver);
+    }
+    public HomePage toPage(){
+        driver.get(url);
+        return this;
     }
     public void clickOnMyAccountButton(){
         myAccountButton.click();

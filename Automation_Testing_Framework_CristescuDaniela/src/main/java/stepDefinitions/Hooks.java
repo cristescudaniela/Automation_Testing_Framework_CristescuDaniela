@@ -12,7 +12,7 @@ public class Hooks {
     }
     @Before
     public void setUpBeforeEach(){
-        testContext.getWebDriverManager().getDriver();
+        testContext.getWebDriverManager().getDriver().manage().window().maximize();
         System.out.println("The test case is started.");
     }
     @After

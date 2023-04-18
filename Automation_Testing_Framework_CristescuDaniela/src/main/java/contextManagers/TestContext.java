@@ -2,6 +2,7 @@ package contextManagers;
 
 import managers.WebDriverManager;
 
+
 public class TestContext {
 
     private WebDriverManager webDriverManager;
@@ -15,8 +16,6 @@ public class TestContext {
     public WebDriverManager getWebDriverManager() {
         return webDriverManager;
     }
-
-//    public ScenarioContext getScenarioContext() {
-//        return scenarioContext;
+    public ScenarioContext getScenarioContext() {return scenarioContext;
     }
-//}
+}
