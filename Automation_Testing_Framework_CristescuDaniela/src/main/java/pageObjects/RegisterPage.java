@@ -5,8 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class RegisterPage extends Page {
-
-    public boolean allTheEllementsAreDisplayed;
+    private final String ENDPOINT = "/index.php?route=account/register";
 
     public RegisterPage(WebDriver driver) {
         super(driver);
@@ -30,10 +29,16 @@ public class RegisterPage extends Page {
         lastNameInput.sendKeys(lastName);
         emailInput.sendKeys(email);
         passwordInput.sendKeys(password);
-
     }
 
-    public boolean allTheEllementsAreDisplayed() {
-        return firstNameInput.isDisplayed() && lastNameInput.isDisplayed() && emailInput.isDisplayed() && passwordInput.isDisplayed() && privacyCheckBox.isDisplayed() && continueButton.isDisplayed();
+    public boolean allTheElementsAreDisplayed() {
+        return firstNameInput.isDisplayed() && lastNameInput.isDisplayed() && emailInput.isDisplayed() && passwordInput.isDisplayed() &&
+                continueButton.isDisplayed() && privacyCheckBox.isDisplayed();
     }
+
+    public RegisterPage toPage() {
+        driver.get(url + ENDPOINT);
+        return this;
+    }
+
 }

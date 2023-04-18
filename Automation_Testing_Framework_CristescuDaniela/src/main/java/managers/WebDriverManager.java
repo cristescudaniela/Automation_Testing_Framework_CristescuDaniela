@@ -10,19 +10,23 @@ public class WebDriverManager {
     public WebDriverManager(String webDriverType) {
         this.webDriverType = webDriverType;
     }
+
     private WebDriver driver;
     private String webDriverType;
+    public WebDriverManager(){
+        webDriverType = TestDataFileReaderManager.getBrowserType();
+    }
 
     private WebDriver createDriver() {
         switch (webDriverType) {
             case "CHROME":
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--remote-allow-origins=*");
-                System.setProperty("webdriver.chrome.driver", "/Users/danielacristescu/Desktop/Proiectele mele/Automation_Testing_Framework_CristescuDaniela/Automation_Testing_Framework_CristescuDaniela/src/main/resources/drivers/chromedriver");
+                System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver");
                 driver = new ChromeDriver(chromeOptions);
                 break;
             case "FIREFOX":
-                System.setProperty("webdriver.gecko,driver", "/Users/danielacristescu/Desktop/Proiectele mele/Automation_Testing_Framework_CristescuDaniela/Automation_Testing_Framework_CristescuDaniela/src/main/resources/drivers/geckodriver");
+                System.setProperty("webdriver.gecko,driver", "src/main/resources/drivers/geckodriver");
                 driver = new FirefoxDriver();
                 break;
             default:
@@ -30,6 +34,7 @@ public class WebDriverManager {
         }
         return driver;
     }
+
 
     public WebDriver getDriver() {
         if (driver == null) {
@@ -44,5 +49,5 @@ public class WebDriverManager {
             System.out.println("Driver-ul a fost inchis.");
         }
     }
-
 }
+
