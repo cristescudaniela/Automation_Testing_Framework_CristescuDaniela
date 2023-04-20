@@ -4,6 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import java.util.concurrent.TimeUnit;
+
+
 
 public class WebDriverManager {
 
@@ -26,12 +29,16 @@ public class WebDriverManager {
                 driver = new ChromeDriver(chromeOptions);
                 break;
             case "FIREFOX":
-                System.setProperty("webdriver.gecko,driver", "src/main/resources/drivers/geckodriver");
+                System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver");
                 driver = new FirefoxDriver();
                 break;
             default:
                 System.out.println("Optiunea de web driver indicata nu este valabila! Mai incearca.");
         }
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+        driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
+
         return driver;
     }
 

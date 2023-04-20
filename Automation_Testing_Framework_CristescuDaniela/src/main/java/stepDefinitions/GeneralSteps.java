@@ -6,6 +6,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import managers.LoggerManager;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import pageObjects.Page;
@@ -23,6 +24,7 @@ public class GeneralSteps {
     @Given("^\"([^\"]*)\" is opened$")
     public void isOpened(String page) {
         Page.navigateToPage(page, testContext.getWebDriverManager().getDriver());
+        LoggerManager.logInfo(page + " is opened");
         testContext.getScenarioContext().setContext(ContextKeys.PAGE, page);
 
         boolean verdict = testContext.getWebDriverManager().getDriver().getCurrentUrl().contains(Page.url);
@@ -32,6 +34,7 @@ public class GeneralSteps {
     @When("^\"([^\"]*)\" button is clicked")
     public void buttonIsClicked(String button) {
         Page.clickOnElement(testContext.getScenarioContext().getContext(ContextKeys.PAGE), button, testContext.getWebDriverManager().getDriver());
+        LoggerManager.logInfo(button + "is clicked");
     }
 
     @Then("^the new url contains the following string \"([^\"]*)\"$")

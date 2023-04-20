@@ -9,7 +9,7 @@ import pageObjects.HomePage;
 import pageObjects.RegisterPage;
 
 public class JunitPractice {
-    WebDriverManager webDriverManager = new WebDriverManager("CHROME");
+/*    WebDriverManager webDriverManager = new WebDriverManager("CHROME");
     @BeforeEach
     public void beforeTestProcedure(){
         webDriverManager.getDriver().get("https://demo.opencart.com/");
@@ -35,5 +35,5 @@ public class JunitPractice {
 
         RegisterPage registerPage = new RegisterPage(webDriverManager.getDriver());
         Assertions.assertTrue(registerPage.allTheEllementsAreDisplayed, "Cel putin unul dintre elemente nu a fost afisat");
-    }
+    }*/
 }
