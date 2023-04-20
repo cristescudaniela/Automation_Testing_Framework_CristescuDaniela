@@ -9,7 +9,7 @@ public class TestContext {
     private ScenarioContext scenarioContext;
 
     public TestContext() {
-        webDriverManager = new WebDriverManager("CHROME");
+        webDriverManager = new WebDriverManager();
         scenarioContext = ScenarioContext.getInstance();
     }
 

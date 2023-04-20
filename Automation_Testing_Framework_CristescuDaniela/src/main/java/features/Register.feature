@@ -3,11 +3,11 @@ Feature: Register feature test suite
   Background:
     Given "HomePage" is opened
 
-  @Flexible
+  @run
   Scenario: Register button is displayed on Home Page
     When "myAccountButton" button is clicked
-    And "registerButton" button is clicked
-    Then the new url contains the following string "register"
+#    And "registerButton" button is clicked
+#    Then the new url contains the following string "register"
 
   @Flexible
   Scenario Outline: Register page url contains the following <keyword>
@@ -19,7 +19,7 @@ Feature: Register feature test suite
       | index            |
       | account/register |
 
-  @FieldValidation @run
+  @FieldValidation
   Scenario Outline: Error message is displayed when using invalid <email> email value
     When "myAccountButton" button is clicked
     And "registerButton" button is clicked

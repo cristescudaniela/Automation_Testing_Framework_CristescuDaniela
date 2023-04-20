@@ -39,9 +39,7 @@ public abstract class Page {
 
     public static void clickOnElement(Object pageName, String elementName, WebDriver driver) {
         WebElement button= getElement(pageName, elementName, driver);
-        Actions actions = new Actions(driver);
-        actions.moveToElement(button).click().build();
-        actions.perform();
+        button.click();
     }
 
     public static boolean elementisDisplayed(Object pageName, String elementName, WebDriver driver) {
