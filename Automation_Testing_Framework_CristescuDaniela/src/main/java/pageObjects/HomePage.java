@@ -7,15 +7,17 @@ public class HomePage extends Page {
     public HomePage(WebDriver driver) {
         super(driver);
     }
-    public HomePage toPage(){
+
+    public HomePage toPage() {
         driver.get(url);
         return this;
     }
-    public void clickOnMyAccountButton(){
-        myAccountButton.click();
-    }
-    public void clickOnRegisterButton(){
-        registerButton.click();
-    }
 
+//    public void clickOnMyAccountButton(){
+//        myAccountButton.click();
+//    }
+//    public void clickOnRegisterButton(){
+//        registerButton.click();
+//
+//}
 }

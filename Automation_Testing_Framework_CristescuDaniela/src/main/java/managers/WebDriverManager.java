@@ -1,22 +1,22 @@
 package managers;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import java.util.concurrent.TimeUnit;
 
+import java.util.concurrent.TimeUnit;
 
 
 public class WebDriverManager {
 
-    public WebDriverManager(String webDriverType) {
-        this.webDriverType = webDriverType;
-    }
-
     private WebDriver driver;
     private String webDriverType;
-    public WebDriverManager(){
+    private static final Logger logger = LogManager.getLogger(WebDriverManager.class);
+
+    public WebDriverManager() {
         webDriverType = TestDataFileReaderManager.getBrowserType();
     }
 
@@ -53,7 +53,7 @@ public class WebDriverManager {
     public void closeDriver() {
         if (driver != null) {
             driver.close();
-            System.out.println("Driver-ul a fost inchis.");
+            logger.info("The driver was closed");
         }
     }
 }

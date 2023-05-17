@@ -40,5 +40,4 @@ public class RegisterPage extends Page {
         driver.get(url + ENDPOINT);
         return this;
     }
-
 }

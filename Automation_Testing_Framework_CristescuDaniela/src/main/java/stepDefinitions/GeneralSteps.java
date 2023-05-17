@@ -7,6 +7,8 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import managers.LoggerManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import pageObjects.Page;
@@ -16,6 +18,7 @@ import java.util.List;
 
 public class GeneralSteps {
     private TestContext testContext;
+    private static final Logger logger = LogManager.getLogger(GeneralSteps.class);
 
     public GeneralSteps(TestContext context) {
         testContext = context;
@@ -24,7 +27,7 @@ public class GeneralSteps {
     @Given("^\"([^\"]*)\" is opened$")
     public void isOpened(String page) {
         Page.navigateToPage(page, testContext.getWebDriverManager().getDriver());
-        LoggerManager.logInfo(page + " is opened");
+        logger.info(page + " is opened");
         testContext.getScenarioContext().setContext(ContextKeys.PAGE, page);
 
         boolean verdict = testContext.getWebDriverManager().getDriver().getCurrentUrl().contains(Page.url);
@@ -34,12 +37,17 @@ public class GeneralSteps {
     @When("^\"([^\"]*)\" button is clicked")
     public void buttonIsClicked(String button) {
         Page.clickOnElement(testContext.getScenarioContext().getContext(ContextKeys.PAGE), button, testContext.getWebDriverManager().getDriver());
-        LoggerManager.logInfo(button + "is clicked");
+        logger.info(button + " is clicked");
     }
 
     @Then("^the new url contains the following string \"([^\"]*)\"$")
     public void theNewUrlContainsTheFollowingString(String contentKey) {
         Boolean stringIsPresentInUrl = testContext.getWebDriverManager().getDriver().getCurrentUrl().contains(contentKey);
+        if (stringIsPresentInUrl){
+            logger.info("The new url contains: " + contentKey );
+        } else {
+            logger.error("The new url doesn't contain: " + contentKey);
+        }
         Assertions.assertTrue(stringIsPresentInUrl, "The url contains: " + contentKey);
     }
 

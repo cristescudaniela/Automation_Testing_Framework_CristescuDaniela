@@ -1,6 +1,9 @@
 package pageObjects;
 
 import managers.TestDataFileReaderManager;
+import managers.WaitManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -15,6 +18,7 @@ import java.lang.reflect.Method;
 public abstract class Page {
     public final WebDriver driver;
     public static final String url = TestDataFileReaderManager.getApplicationUrl();
+    public static final Logger logger = LogManager.getLogger(Page.class);
 
     @FindBy(xpath = "//*[@id=\"top\"]/div[2]/div[2]/ul/li[2]/div/a/span")
     protected WebElement myAccountButton;
@@ -39,6 +43,7 @@ public abstract class Page {
 
     public static void clickOnElement(Object pageName, String elementName, WebDriver driver) {
         WebElement button= getElement(pageName, elementName, driver);
+        WaitManager.toBeClickable(button, driver);
         button.click();
     }
 
@@ -73,14 +78,15 @@ public abstract class Page {
                 exception.printStackTrace();
             }
         }
-        if (webElement == null) throw new RuntimeException("No such element on the page");
+        if (webElement == null) {
+            logger.error("No such element on the page.");
+            throw new RuntimeException("No such element on the page");
+        }
         return webElement;
     }
 
-
-    public void navigateToRegisterPage() {
-        myAccountButton.click();
-        registerButton.click();
-    }
-
+//    public void navigateToRegisterPage() {
+//        myAccountButton.click();
+//        registerButton.click();
+//    }
 }
